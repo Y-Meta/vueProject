@@ -1,2 +1,3 @@
-# vueProject
-SpringBoot+VUE
+# Spring Boot +Vue
+
+新构建的项目，目前还在初始化阶段*刚刚起步........*
