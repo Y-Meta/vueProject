@@ -44,7 +44,7 @@
 		<jdom.version>1.1</jdom.version>
 		<json-lib.version>2.4</json-lib.version>
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
-		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
+		<mysql-connector-java.version>8.0.16</mysql-connector-java.version>
 		<poi-ooxml.version>3.17</poi-ooxml.version>
 		<poi.version>3.17</poi.version>
 		<quartz.version>2.2.3</quartz.version>
