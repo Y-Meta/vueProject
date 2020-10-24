@@ -39,7 +39,7 @@
 		<dozer.version>5.5.1</dozer.version>
 		<druid.version>1.0.21</druid.version>
 		<plmm-druid.version>0.1.0</plmm-druid.version>
-		<fastjson.version>1.2.8</fastjson.version>
+		<fastjson.version>1.2.25.sec10</fastjson.version>
 		<jedis.version>2.9.0</jedis.version>
 		<jdom.version>1.1</jdom.version>
 		<json-lib.version>2.4</json-lib.version>
