@@ -1,0 +1,89 @@
+server:
+  port: 8011
+  sessionTimeout: 30
+  servlet:
+    contextPath: /common
+  connection-timeout: 5000
+  tomcat:
+    max-threads: 100
+    uriEncoding: utf-8
+    acceptCount: 50
+spring:
+  thymeleaf:
+    cache: false
+    suffix: .html
+    mode: HTML5
+    encoding: utf-8
+    content-type: text/html 
+    prefix: classpath:/templates/view/ 
+  rocketmq:
+    name-server-address: 127.0.214.127:9876
+    # 可选, 如果无需发送消息则忽略该配置
+    producer-group: plmm_default_product
+    # 发送超时配置毫秒数, 可选, 默认3000
+    send-msg-timeout: 5000
+    # 追溯消息具体消费情况的开关，默认打开
+    #trace-enabled: false
+    # 是否启用VIP通道，默认打开
+    vip-channel-enabled: false
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:ehcache.xml
+#gateway:
+#  serviceId: gateway
+#  appId: web-common
+#  appToken: 123456
+#cas:
+#  service:
+#    app: 10.186.28.212/ba/  
+
+#整合apollo配置中心
+app:
+  id: web-common
+apollo:
+  meta: http://127.0.0.1:9080 #apollo meta_server地址
+  bootstrap:
+    enabled: true
+    namespaces: tp_micro_service.ds_mysql_config #指定要加载的配置文件
+    
+plmm:
+  host:
+    f5: 127.0.0.1
+  session:
+    type: local
+    domain: 127.0.0.1
+#  redis:
+#    soTimeout: 2000
+#    connectionTimeout: 2000
+#    maxAttempts: 3
+#    passwd: anyword   #这里预留密码配置，代码中解析密码部分已经注释
+#    maxTotal: 10
+#    maxIdle: 10
+#    minIdel: 0
+#    testOnBorrow: false
+#    testOnIdle: true
+#    testOnReturn: false
+#    timeBetweenEvictionRunsMillis: 60000
+#    numTestsPerEvictionRun: -1
+#    jedis[0]:
+#      host: 192.168.1.190
+#      port: 9001
+  
+dubbo:
+  application:
+    id: web-common
+    name: web-common
+#    qos-enable: true
+#    qos-port: 33333
+#    qos-accept-foreign-ip: false
+  registry:
+    protocol: zookeeper
+    address: zookeeper://127.0.0.1:2181
+  server: true
+  version: 0.0.1
+  protocol:
+    name: dubbo
+    port: 2${server.port}
+redirect:
+    path: http://127.0.0.1:8009/common/login

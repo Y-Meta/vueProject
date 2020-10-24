@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="localcache" />
+        <module name="redis" />
+        <module name="interface-common" />
+        <module name="web-user" />
+        <module name="druid" />
+        <module name="interface-user" />
+        <module name="plmm-utils" />
+        <module name="cryptography" />
+        <module name="service-common" />
+        <module name="service-user" />
+        <module name="vo-user" />
+        <module name="webmvc" />
+        <module name="vo-security" />
+        <module name="vo-common" />
+        <module name="web-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cryptography" target="1.8" />
+      <module name="druid" target="1.8" />
+      <module name="generate" target="1.8" />
+      <module name="interface-common" target="1.8" />
+      <module name="interface-user" target="1.8" />
+      <module name="localcache" target="1.8" />
+      <module name="platform-customer" target="1.8" />
+      <module name="plmm-common" target="1.8" />
+      <module name="plmm-user" target="1.8" />
+      <module name="plmm-utils" target="1.8" />
+      <module name="redis" target="1.8" />
+      <module name="redis-session" target="1.8" />
+      <module name="security" target="1.8" />
+      <module name="service-common" target="1.8" />
+      <module name="service-user" target="1.8" />
+      <module name="studySpringbootAndVue" target="1.8" />
+      <module name="vo-common" target="1.8" />
+      <module name="vo-security" target="1.8" />
+      <module name="vo-user" target="1.8" />
+      <module name="web-common" target="1.8" />
+      <module name="web-user" target="1.8" />
+      <module name="webmvc" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cryptography" options="-parameters" />
+      <module name="druid" options="-parameters" />
+      <module name="interface-common" options="-parameters" />
+      <module name="interface-user" options="-parameters" />
+      <module name="localcache" options="-parameters" />
+      <module name="plmm-user" options="" />
+      <module name="plmm-utils" options="-parameters" />
+      <module name="redis" options="-parameters" />
+      <module name="redis-session" options="-parameters" />
+      <module name="security" options="-parameters" />
+      <module name="service-common" options="-parameters" />
+      <module name="service-user" options="-parameters" />
+      <module name="studySpringbootAndVue" options="-parameters" />
+      <module name="vo-common" options="-parameters" />
+      <module name="vo-security" options="-parameters" />
+      <module name="vo-user" options="-parameters" />
+      <module name="web-common" options="-parameters" />
+      <module name="web-user" options="-parameters" />
+      <module name="webmvc" options="-parameters" />
+    </option>
+  </component>
+</project>

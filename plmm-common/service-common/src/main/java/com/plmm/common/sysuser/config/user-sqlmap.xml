@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plmm.common.sysuser.config">
+	<select id="queryUser" parameterType="java.util.Map"
+		resultType="com.plmm.common.sysuser.model.UserVO">
+		SELECT
+						sex as sex  ,				name as name  ,				remark as remark  ,				id as id 				from user
+		WHERE 1 = 1
+				<if test="sex != null and sex != ''">
+			AND sex = #{sex}
+		</if>
+				<if test="name != null and name != ''">
+			AND name = #{name}
+		</if>
+				<if test="remark != null and remark != ''">
+			AND remark = #{remark}
+		</if>
+				<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+				<if test="orderStr != null and orderStr != ''">
+			ORDER BY #{orderStr}
+		</if>
+	</select>
+
+	<select id="countUser" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM user WHERE 1 = 1
+				<if test="sex != null and sex != ''">
+			AND sex = #{sex}
+		</if>
+				<if test="name != null and name != ''">
+			AND name = #{name}
+		</if>
+				<if test="remark != null and remark != ''">
+			AND remark = #{remark}
+		</if>
+				<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+			</select>
+
+	<insert id="insertOneUser" parameterType="java.util.Map">
+		INSERT INTO user(id
+						<if test="sex != null and sex != ''">
+			, sex
+		</if>
+								<if test="name != null and name != ''">
+			, name
+		</if>
+								<if test="remark != null and remark != ''">
+			, remark
+		</if>
+										)
+		VALUES(#{id}
+						<if test="sex != null and sex != ''">
+			, #{sex}
+		</if>
+								<if test="name != null and name != ''">
+			, #{name}
+		</if>
+								<if test="remark != null and remark != ''">
+			, #{remark}
+		</if>
+										)
+	</insert>
+
+	<update id="updateOneUser" parameterType="java.util.Map">
+		UPDATE user
+		<set>
+						<if test="sex != null and sex != ''">
+			sex = #{sex},
+		</if>
+								<if test="name != null and name != ''">
+			name = #{name},
+		</if>
+								<if test="remark != null and remark != ''">
+			remark = #{remark},
+		</if>
+										</set>
+		where id = #{id}
+	</update>
+	
+	<update id="deleteLogicOneUser" parameterType="java.util.Map">
+		UPDATE 
+			user 
+		SET 
+			delflag = 'y',
+			LASTMODIFIERID=#{lastmodifierid},
+			LASTMODIFIEDTIME=#{lastmodifiedtime}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="deleteOneUser" parameterType="java.lang.String">
+		delete from user
+		where id = #{id}
+	</delete>
+	
+	<delete id="deleteUser" parameterType="java.util.Map">
+		delete from user 
+		where 1=1
+				<if test="sex != null and sex != ''">
+			and sex = #{sex}
+		</if>
+				<if test="name != null and name != ''">
+			and name = #{name}
+		</if>
+				<if test="remark != null and remark != ''">
+			and remark = #{remark}
+		</if>
+				<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+			</delete>
+	
+	<select id="queryOneUser" parameterType="java.lang.String"
+		resultType="com.plmm.common.sysuser.model.UserVO">
+		SELECT
+							sex as sex  ,					name as name  ,					remark as remark  ,					id as id 				from user
+		WHERE id = #{id}
+	</select>
+	
+	<select id="queryUserPK" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		SELECT
+			id as id
+		FROM user
+		WHERE 1 = 1
+				<if test="sex != null and sex != ''">
+			AND sex = #{sex}
+		</if>
+				<if test="name != null and name != ''">
+			AND name = #{name}
+		</if>
+				<if test="remark != null and remark != ''">
+			AND remark = #{remark}
+		</if>
+				<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+			</select>
+</mapper>

@@ -1,0 +1,58 @@
+package ${packagepath}service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import ${rootpackagepath}common.utils.ResultUtil;
+import ${rootpackagepath}common.base.Result;
+import ${packagepath}mapper.${name}Mapper;
+import ${packagepath}model.${name}VO;
+
+@Service(version = "${dubbo.version}")
+public class ${name}DubboServiceImpl implements I${name}DubboService{
+	@Autowired
+	private ${name}Mapper ${lowName}Mapper;
+	
+	@Override
+	public Object[] get${name}(Map<String, Object> paramMap, int offset, int limit) {
+		return ${lowName}Mapper.get${name}(paramMap,offset,limit);
+	}
+	
+	@Override
+	public List<${name}VO> get${name}List(Map<String, Object> paramMap) {
+		return ${lowName}Mapper.get${name}List(paramMap);
+	}
+	
+	@Override
+	public ${name}VO selectOne${name}(String primaryKey){
+		return ${lowName}Mapper.selectOne${name}(primaryKey);
+	}
+	
+	@Override
+	public ${name}VO selectOne${name}(Map<String, Object> paramMap) {
+		return ${lowName}Mapper.selectOne${name}(paramMap);
+	}
+	
+	@Override
+	public Result save${name}(Map<String, Object> paramMap,String staffNo) {
+		${lowName}Mapper.save${name}(paramMap,staffNo);
+		return ResultUtil.sucess("保存成功");
+	}
+	
+	@Override
+	public Result delete${name}(Map<String, Object> paramMap,String staffNo) {
+		${lowName}Mapper.delete${name}(paramMap,staffNo);
+		return ResultUtil.sucess("删除成功");
+	}
+	
+	@Override
+	public Result update${name}(Map<String, Object> paramMap,String staffNo) {
+		${lowName}Mapper.update${name}(paramMap,staffNo);
+		return ResultUtil.sucess("更新成功");
+	}
+}
+
+

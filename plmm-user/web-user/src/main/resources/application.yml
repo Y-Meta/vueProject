@@ -1,0 +1,102 @@
+#server
+server:
+  port: 8010
+  sessionTimeout: 30
+  servlet:
+    contextPath: /plmm-user
+  connection-timeout: 5000
+  tomcat:
+    max-threads: 100
+    uriEncoding: utf-8
+    acceptCount: 50
+
+#spring
+spring:
+  datasource:
+    url: jdbc:mysql:///jtsys?serverTimezone=GMT%2B8&characterEncoding=UTF8
+    username: root
+    password: root
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    suffix: .html
+    mode: HTML5
+    encoding: utf-8
+    content-type: text/html
+#dubbo
+dubbo:
+  application:
+    id: web-customer
+    name: web-customer
+  #    qos-enable: true
+  #    qos-port: 33333
+  #    qos-accept-foreign-ip: false
+  registry:
+    protocol: zookeeper
+    address: zookeeper://127.0.0.1:2181
+  server: true
+  version: 0.0.1
+  protocol:
+    name: dubbo
+    port: 2${server.port}
+
+
+app:
+  id: web-user
+#apollo
+apollo:
+  meta: http://127.0.0.1:9080 #apollo meta_server地址
+  bootstrap:
+    enabled: true
+    namespaces: tp_plmm_service.ds_mysql_config #指定要加载的配置文件
+#  aop:
+#    proxy-target-class: false  #JDK
+#  task:
+#    execution:
+#      pool:
+#        core-size: 50
+#        max-size: 100
+#        queue-capacity: 200
+#        keep-alive: 60
+#        allow-core-thread-timeout: false
+#      thread-name-prefix: db.spring.thread.task-
+##mybatis
+#mybatis:
+#  configuration:
+#    default-statement-timeout: 30
+#    map-underscore-to-camel-case: true
+#  mapper-locations:
+#    - classpath:/mapper/*/*.xml
+#
+##logging
+#logging:
+#  level:
+#    com.cy: debug
+#  file: D:/TCGBIII/a.log
+##page
+#page.config:
+#  pageSize: 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
