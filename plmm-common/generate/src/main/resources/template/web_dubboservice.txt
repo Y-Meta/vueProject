@@ -1,0 +1,47 @@
+package ${rootpackagepath}service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.stereotype.Component;
+import ${packagepath}service.I${name}DubboService;
+import ${packagepath}model.${name}VO;
+import ${rootpackagepath}common.base.Result;
+
+@Component
+public class ${name}Service {
+
+	@Reference(version="${dubbo.version}",check=false,timeout=30000,interfaceClass=I${name}DubboService.class)
+    private I${name}DubboService ${lowName}DubboService;
+	
+	public Object[] get${name}(Map<String, Object> paramMap, int offset, int limit) {
+		return ${lowName}DubboService.get${name}(paramMap,offset,limit);
+	}
+	
+	public List<${name}VO> get${name}List(Map<String, Object> paramMap) {
+		return ${lowName}DubboService.get${name}List(paramMap);
+	}
+	
+	public ${name}VO selectOne${name}(String primaryKey){
+		return ${lowName}DubboService.selectOne${name}(primaryKey);
+	}
+	
+	public ${name}VO selectOne${name}(Map<String, Object> paramMap) {
+		return ${lowName}DubboService.selectOne${name}(paramMap);
+	}
+	
+	public Result save${name}(Map<String, Object> paramMap,String staffNo) {
+		return ${lowName}DubboService.save${name}(paramMap,staffNo);
+	}
+
+	public Result delete${name}(Map<String, Object> paramMap,String staffNo) {
+		return ${lowName}DubboService.delete${name}(paramMap,staffNo);
+	}
+
+	public Result update${name}(Map<String, Object> paramMap,String staffNo) {
+		return ${lowName}DubboService.update${name}(paramMap,staffNo);
+	}
+}
+
+

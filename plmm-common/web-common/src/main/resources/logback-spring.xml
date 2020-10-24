@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %5p | %t | %-15logger{15} | %m | %n</pattern>
+			<charset>utf-8</charset>
+		</encoder>
+	</appender>
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/home/jtaom/plmm/web-common.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>/home/jtaom/plmm/web-common.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<maxFileSize>200MB</maxFileSize> 
+            <maxHistory>10</maxHistory> 
+            <totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d %5p | %t | %logger{25} - %msg%n</pattern>
+			<charset>utf-8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="FileLog"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/home/deploy/nas/common/logs/mq-monitor/file_log.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>/home/deploy/nas/common/logs/mq-monitor/%d{yyyyMM,aux}/file_log.%d{yyyyMM}.%i.log</fileNamePattern>
+			<maxFileSize>50MB</maxFileSize>
+			<maxHistory>10</maxHistory>
+			<totalSizeCap>60GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%msg%n</pattern>
+			<charset>utf-8</charset>
+		</encoder>
+	</appender>
+
+	<!-- 本地环境+测试环境. 多个使用逗号隔开. -->
+	<springProfile name="default,uat,sit,dev">
+		<root>
+			<level value="info" />
+			<appender-ref ref="FILE" />
+			<appender-ref ref="CONSOLE" />
+		</root>
+		<logger name="com.plmm.webmvc.aspect.LogFileAspect" level="INFO" additivity="false">
+			<appender-ref ref="FileLog" />
+		</logger>
+	</springProfile>
+	
+	<!-- 生产环境. -->
+	<springProfile name="pro,pre">
+		<logger name="com.plmm">
+			<level value="info" />
+		</logger>
+		<logger name="org.springframework">
+			<level value="info" />
+		</logger>
+		<root>
+			<level value="warn" />
+			<appender-ref ref="FILE" />
+		</root>
+		<logger name="com.plmm.webmvc.aspect.LogFileAspect" level="INFO" additivity="false">
+			<appender-ref ref="FileLog" />
+		</logger>
+	</springProfile>
+	
+</configuration>

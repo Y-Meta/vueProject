@@ -1,0 +1,64 @@
+package ${packagepath}service;
+
+import ${rootpackagepath}common.base.Result;
+import java.util.Map;
+import java.util.List;
+import ${rootpackagepath}common.base.Result;
+import ${packagepath}model.${name}VO;
+/**
+ * @ClassName: I${name}DubboService
+ * @Description: TODO  
+ * @autor: ${author}
+ * @date: ${nowdatetime}
+ * @version: V1.0
+ */
+public interface I${name}DubboService {
+	String BEAN_ID = "${lowName}Service";
+	/**
+	 *查询${name}数据
+	 *@param paramMap 查询条件参数
+	 *@param offset 分页下标
+	 *@param limit 每页条数
+	 */
+	Object[] get${name}(Map<String, Object> paramMap, int offset, int limit);
+	/**
+	 *通过主键查询一个${name}VO对象
+	 *@param primaryKey 主键
+	 *@return ${name}VO对象
+	 */
+	${name}VO selectOne${name}(String primaryKey);
+	/**
+	 *通过map型参数查询一个${name}VO对象
+	 *@param paramMap map参数
+	 *@return ${name}VO对象
+	 */
+	${name}VO selectOne${name}(Map<String, Object> paramMap);
+	/**
+	 *通过map型参数查询一个${name}VO集合
+	 *@param paramMap map参数
+	 *@return ${name}VO集合
+	 */
+	List<${name}VO> get${name}List(Map<String, Object> paramMap);
+	/**
+	 *新增一个${name}VO
+	 *@param paramMap map参数
+	 *@param staffNo 操作人
+	 *@return result 返回结果
+	 */
+	public Result save${name}(Map<String, Object> paramMap,String staffNo);
+	/**
+	 *逻辑删除一个${name}VO
+	 *@param paramMap map参数
+	 *@param staffNo 操作人
+	 *@return result 返回结果
+	 */
+	public Result delete${name}(Map<String, Object> paramMap,String staffNo);
+	/**
+	 *更新一个${name}VO
+	 *@param paramMap map参数
+	 *@param staffNo 操作人
+	 *@return result 返回结果
+	 */
+	public Result update${name}(Map<String, Object> paramMap,String staffNo);
+}
+

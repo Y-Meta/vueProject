@@ -1,0 +1,61 @@
+package ${packagepath}mapper;
+
+import java.util.List;
+import java.util.Map;
+import ${rootpackagepath}utils.DateUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import ${packagepath}model.${name}VO;
+import IDefaultService;
+
+@Repository
+public class ${name}Mapper {
+	public static final String NAME_SPACE = "${packagepath}config.";
+	
+	@Autowired
+	IDefaultService service;
+	
+	public Object[] get${name}(Map<String, Object> paramMap, int offset, int limit) {
+		Object[] objs = new Object[2];
+		objs[0] = service.selectOne(NAME_SPACE + "count${name}", paramMap);
+		objs[1] = service.selectList(NAME_SPACE + "query${name}", paramMap, offset, limit);
+		return objs;
+	}
+	
+	public List<${name}VO> get${name}List(Map<String, Object> paramMap) {
+		return service.selectList(NAME_SPACE + "query${name}", paramMap);
+	}
+	
+	
+	public ${name}VO selectOne${name}(String primaryKey) {
+		return service.selectOne(NAME_SPACE + "queryOne${name}", primaryKey);
+	}
+	
+	public ${name}VO selectOne${name}(Map<String, Object> paramMap) {
+		return service.selectOne(NAME_SPACE + "query${name}", paramMap);
+	}
+	
+	public void save${name}(Map<String, Object> paramMap,String staffNo) {
+		String now = DateUtils.getTime();
+		paramMap.put("createUser", staffNo);//创建人
+		paramMap.put("createTime", now);
+		service.insert(NAME_SPACE + "insertOne${name}", paramMap);
+	}
+	
+	public void delete${name}(Map<String, Object> paramMap,String staffNo) {
+		String now = DateUtils.getTime();
+		paramMap.put("updateUser", staffNo);//最近逻辑删除者
+		paramMap.put("updateTime", now);
+		service.update(NAME_SPACE + "deleteLogicOne${name}", paramMap);
+	}
+	
+	public void update${name}(Map<String, Object> paramMap,String staffNo) {
+		String now = DateUtils.getTime();
+		paramMap.put("updateUser", staffNo);//最近更新者
+		paramMap.put("updateTime", now);
+		service.update(NAME_SPACE + "updateOne${name}", paramMap);
+	}
+}
+
+

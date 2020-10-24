@@ -1,0 +1,37 @@
+package ${packagepath}model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+/**
+ * @ClassName: ${name}VO
+ * @Description: TODO
+ * @autor: ${author}
+ * @date: ${nowdatetime}
+ * @version: V1.0
+ */
+ 
+@ApiModel
+public class ${name}VO implements Serializable{
+    private static final long serialVersionUID = 1L;
+	#set($idx = 0)
+	#foreach($ele in $columns.entrySet())
+	@ApiModelProperty(value = "$ele.getValue().getLabel()", position = $idx)
+	private String $ele.getKey();
+	#set($idx = $idx + 1)
+	#end
+	
+	#foreach($ele in $columns.entrySet())
+	#set($upperName = $ele.getKey().substring(0,1).toUpperCase() + $ele.getKey().substring(1))
+	public void set$upperName (String $ele.getKey()) {
+		this.$ele.getKey() = $ele.getKey();
+	}
+	public String get$upperName() {
+		return this.$ele.getKey();
+	}
+	#end
+	
+	
+}

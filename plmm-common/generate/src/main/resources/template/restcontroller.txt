@@ -1,0 +1,208 @@
+package ${rootpackagepath}controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ${rootpackagepath}common.base.Result;
+import ${rootpackagepath}common.base.ResultEnum;
+import ${rootpackagepath}common.exception.plmmSqlException;
+import ${packagepath}model.${name}VO;
+import ${rootpackagepath}common.utils.ResultUtil;
+import ${rootpackagepath}security.core.context.SecurityContextHolder;
+import ${rootpackagepath}service.${name}Service;
+import ${rootpackagepath}webmvc.aspect.annotation.AvoidRepeatableCommit;
+import ${rootpackagepath}webmvc.config.ApiJsonObject;
+import ${rootpackagepath}webmvc.config.ApiJsonProperty;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiSort;
+/**
+ * 
+ * @ClassName: ${name}RestController 
+ * @Description: 提供${name}VO类的restful接口调用  
+ * @autor: ${author}
+ * @date: ${nowdatetime}
+ * @version: V1.0
+ */
+@Api
+@ApiSort
+@RestController
+@RequestMapping(value = "${lowName}")
+public class ${name}RestController {
+
+	private static Logger logger = LoggerFactory.getLogger(${name}RestController.class);
+	
+	@Autowired
+	${name}Service ${lowName}Service;
+	
+	/**
+	 * @Description: 获取${name}列表,带分页数据
+	 * @param param
+	 * @return Object[] 数组第一位数为总记录数，第二位为数据集
+	 */
+	@ApiOperation(value = "获取${name}列表,带分页数据")
+	@PostMapping(value="/get${name}")
+	public Result get${name}(@RequestBody Map<String,Object> param) {
+		try {
+			Map<String, Object> map = (Map<String, Object>)param.get("map");
+			Integer offset = Integer.parseInt(param.get("offset").toString());
+			Integer pageSize = Integer.parseInt(param.get("pagesize").toString());
+			Object[] objArray = ${lowName}Service.get${name}(map, offset, pageSize);
+			return ResultUtil.sucess(objArray);
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	}
+	
+	/**
+	 * 
+	 * @Description: 根据主键查询VO
+	 * @param code
+	 * @return ${name}VO
+	 */
+	@ApiOperation(value = "根据主键查询VO")
+	@PostMapping(value="/selectOne${name}ByPk/{code}")
+	public Result selectOne${name}(@PathVariable String code) {
+		try {
+			${name}VO vo = ${lowName}Service.selectOne${name}(code);
+			return ResultUtil.sucess(vo);
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	} 
+	
+	/**
+	 * 
+	 * @Description: 根据map参数查询VO
+	 * @param param  Map类型的参数
+	 * @return ${name}VO
+	 */
+	@ApiOperation(value = "根据map参数查询VO")
+	@PostMapping(value="/selectOne${name}ByMap")
+	public Result selectOne${name}(@RequestBody Map<String,Object> param){
+		try {
+			${name}VO vo = ${lowName}Service.selectOne${name}(param);
+			return ResultUtil.sucess(vo); 
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	} 
+	
+	/**
+	 * 
+	 * @Description: 根据map查询${name}VO数据集
+	 * @param param map对象
+	 * @return List<${name}VO>
+	 */
+	@ApiOperation(value = "根据map查询${name}VO数据集")
+	@PostMapping(value="/select${name}ListByMap")
+	public Result get${name}List(@RequestBody Map<String, Object> param) {
+		try {
+			List<${name}VO> vo = ${lowName}Service.get${name}List(param);
+			return ResultUtil.sucess(vo);
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	}
+	
+	/**
+	 * 
+	 * @Description: 新增${name}VO
+	 * @param param map对象
+	 * @return List<${name}VO>
+	 */
+	@ApiOperation(value = "根据map新增${name}VO")
+	@AvoidRepeatableCommit
+	@PostMapping(value="/save${name}")
+	public Result save${name}(@ApiJsonObject(name = "${name}RestController", value = {
+			#set($idx = 1)
+			#foreach($ele in $columns.entrySet())
+				#if($idx != $columns.entrySet().size())
+            		@ApiJsonProperty(key = "$ele.getKey()", example = "2020-10-10", description = "$ele.getValue().getLabel()") , 
+            	#else
+            		@ApiJsonProperty(key = "$ele.getKey()", example = "2020-10-10", description = "$ele.getValue().getLabel()")
+            	#end
+            #set($idx = $idx + 1)
+			#end
+    })@RequestBody Map<String, Object> param) {
+		try {
+			String staffNo = SecurityContextHolder.getContext().getAuthentication().getName();
+			return ${lowName}Service.save${name}(param,staffNo);
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	}
+	
+	/**
+	 * 
+	 * @Description: 修改${name}VO
+	 * @param param map对象
+	 * @return List<${name}VO>
+	 */
+	@ApiOperation(value = "根据map修改${name}VO")
+	@PostMapping(value="/update${name}")
+	public Result update${name}(@RequestBody Map<String, Object> param) {
+		try {
+			String staffNo = SecurityContextHolder.getContext().getAuthentication().getName();
+			return ${lowName}Service.update${name}(param,staffNo);
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	}
+	
+	/**
+	 * 
+	 * @Description: 删除${name}VO
+	 * @param param map对象
+	 * @return List<${name}VO>
+	 */
+	@ApiOperation(value = "根据map删除${name}VO")
+	@PostMapping(value="/delete${name}")
+	public Result delete${name}(@RequestBody Map<String, Object> param) {
+		try {
+			String staffNo = SecurityContextHolder.getContext().getAuthentication().getName();
+			return ${lowName}Service.delete${name}(param,staffNo);
+		} catch (plmmSqlException e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST000001);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResultUtil.error(ResultEnum.ST999999);
+		}
+	}
+	
+}

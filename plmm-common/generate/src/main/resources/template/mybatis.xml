@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${packagepath}config">
+	<select id="query$name" parameterType="java.util.Map"
+		resultType="${packagepath}model.${name}VO">
+		SELECT
+		#set($idx = 1)
+		#foreach($ele in $columns.entrySet())
+		$ele.getValue().getColumnName() as $ele.getKey() #if($idx != $columns.entrySet().size()) ,#end
+		#set($idx = $idx + 1)
+		#end
+		from $tableName
+		WHERE 1 = 1
+		#foreach($ele in $columns.entrySet())
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			AND $ele.getValue().getColumnName() = #{$ele.getKey()}
+		</if>
+		#end
+		<if test="orderStr != null and orderStr != ''">
+			ORDER BY ${orderStr}
+		</if>
+	</select>
+
+	<select id="count$name" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM $tableName WHERE 1 = 1
+		#foreach($ele in $columns.entrySet())
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			AND $ele.getValue().getColumnName() = #{$ele.getKey()}
+		</if>
+		#end
+	</select>
+
+	<insert id="insertOne$name" parameterType="java.util.Map">
+		INSERT INTO $tableName(${primaryKeyColumn}
+		#foreach($ele in $columns.entrySet())
+		#if($ele.getKey() != ${primaryKeyField})
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			, $ele.getValue().getColumnName()
+		</if>
+		#end
+		#end
+		)
+		VALUES(#{${primaryKeyField}}
+		#foreach($ele in $columns.entrySet())
+		#if($ele.getKey() != ${primaryKeyField})
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			, #{$ele.getKey()}
+		</if>
+		#end
+		#end
+		)
+	</insert>
+
+	<update id="updateOne$name" parameterType="java.util.Map">
+		UPDATE $tableName
+		<set>
+		#foreach($ele in $columns.entrySet())
+		#if($ele.getKey() != ${primaryKeyField})
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			$ele.getValue().getColumnName() = #{$ele.getKey()},
+		</if>
+		#end
+		#end
+		</set>
+		where ${primaryKeyColumn} = #{${primaryKeyField}}
+	</update>
+	
+	<update id="deleteLogicOne$name" parameterType="java.util.Map">
+		UPDATE 
+			$tableName 
+		SET 
+			delflag = 'y',
+			LASTMODIFIERID=#{lastmodifierid},
+			LASTMODIFIEDTIME=#{lastmodifiedtime}
+		WHERE
+			${primaryKeyColumn} = #{${primaryKeyField}}
+	</update>
+	
+	<delete id="deleteOne$name" parameterType="java.lang.String">
+		delete from $tableName
+		where ${primaryKeyColumn} = #{${primaryKeyField}}
+	</delete>
+	
+	<delete id="delete$name" parameterType="java.util.Map">
+		delete from $tableName 
+		where 1=1
+		#foreach($ele in $columns.entrySet())
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			and $ele.getValue().getColumnName() = #{$ele.getKey()}
+		</if>
+		#end
+	</delete>
+	
+	<select id="queryOne$name" parameterType="java.lang.String"
+		resultType="${packagepath}model.${name}VO">
+		SELECT
+		#set($idx = 1)
+		#foreach($ele in $columns.entrySet())
+			$ele.getValue().getColumnName() as $ele.getKey() #if($idx != $columns.entrySet().size()) ,#end
+			#set($idx = $idx + 1)
+		#end
+		from $tableName
+		WHERE ${primaryKeyColumn} = #{id}
+	</select>
+	
+	<select id="query${name}PK" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		SELECT
+			${primaryKeyColumn} as ${primaryKeyField}
+		FROM $tableName
+		WHERE 1 = 1
+		#foreach($ele in $columns.entrySet())
+		<if test="$ele.getKey() != null and $ele.getKey() != ''">
+			AND $ele.getValue().getColumnName() = #{$ele.getKey()}
+		</if>
+		#end
+	</select>
+</mapper>

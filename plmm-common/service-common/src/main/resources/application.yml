@@ -1,0 +1,68 @@
+server:
+  port: 8003
+  connection-timeout: 3000
+  tomcat:
+    max-threads: 50
+    uriEncoding: utf-8
+    acceptCount: 50
+    maxConnections: 100
+
+dubbo:
+  application:
+    name: service-common
+  registry:
+    protocol: zookeeper
+    address: zookeeper://127.0.0.1:2181
+  server: true
+  version: 0.0.1
+  protocol:
+    name: dubbo
+    port: 2${server.port}
+
+#整合apollo配置中心
+app:
+  id: service-common
+apollo:
+  meta: http://127.0.0.1:9080 #apollo meta_server地址
+  bootstrap:
+    enabled: true
+    namespaces: tp_micro_service.ds_mysql_config #指定要加载的配置文件
+
+#数据源统一配置，后面整合到配置中心
+mybatis:
+  location: classpath:/mybatis-config.xml
+
+plmm:
+  logger:
+    path: c://logger
+  sqlAop: #配置用于拦截sql
+    isUse: false
+  datasource-config:
+    type: routing
+    name: common
+    prefix: add,update,sumbit,save,delete,cancel,insert
+  datasource:
+    initialSize: 5
+    minIdle: 5
+    maxActive: 50
+    maxWait: 6000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 180000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 50
+    filters: stat,wall
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    isRemoveAbandoned: true #是否开启removeAbandoned模式
+    removeAbandonedTimeoutMillis: 30000
+    removeAbandoned: true
+    nodes[0]:
+      name: common   #基础库
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${ip}:31002/dspdb?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+      username: root
+      password: 123qwe
+
