@@ -47,7 +47,7 @@
 		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
 		<poi-ooxml.version>3.17</poi-ooxml.version>
 		<poi.version>3.17</poi.version>
-		<quartz.version>2.2.3</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<sring-boot-admin.version>1.4.5</sring-boot-admin.version>
 		<plmm.version>0.1.0</plmm.version>
 		<xerces.version>2.4.0</xerces.version>
