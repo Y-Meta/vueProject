@@ -12,7 +12,6 @@ package com.plmm.webmvc.config;
 ///**
 // * @ProjectName: plmmProject
 // * @Description:
-// * @Author: qiguohui
 // * @Date: 2020/4/28 10:40
 // */
 //@Configuration
