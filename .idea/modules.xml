@@ -9,16 +9,16 @@
       <module fileurl="file://$PROJECT_DIR$/plmm-common/localcache/localcache.iml" filepath="$PROJECT_DIR$/plmm-common/localcache/localcache.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-user/platform-customer.iml" filepath="$PROJECT_DIR$/plmm-user/platform-customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/plmm-common.iml" filepath="$PROJECT_DIR$/plmm-common/plmm-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/plmm-user/web-user/plmm-user.iml" filepath="$PROJECT_DIR$/plmm-user/web-user/plmm-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plmm-user/plmm-user.iml" filepath="$PROJECT_DIR$/plmm-user/plmm-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/plmm-utils/plmm-utils.iml" filepath="$PROJECT_DIR$/plmm-common/plmm-utils/plmm-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/redis/redis.iml" filepath="$PROJECT_DIR$/plmm-common/redis/redis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/plmm-common/security/security.iml" filepath="$PROJECT_DIR$/plmm-common/security/security.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/service-common/service-common.iml" filepath="$PROJECT_DIR$/plmm-common/service-common/service-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-user/service-user/service-user.iml" filepath="$PROJECT_DIR$/plmm-user/service-user/service-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/vo-common/vo-common.iml" filepath="$PROJECT_DIR$/plmm-common/vo-common/vo-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/vo-security/vo-security.iml" filepath="$PROJECT_DIR$/plmm-common/vo-security/vo-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-user/vo-user/vo-user.iml" filepath="$PROJECT_DIR$/plmm-user/vo-user/vo-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/web-common/web-common.iml" filepath="$PROJECT_DIR$/plmm-common/web-common/web-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plmm-user/web-user/web-user.iml" filepath="$PROJECT_DIR$/plmm-user/web-user/web-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/plmm-common/webmvc/webmvc.iml" filepath="$PROJECT_DIR$/plmm-common/webmvc/webmvc.iml" />
     </modules>
   </component>

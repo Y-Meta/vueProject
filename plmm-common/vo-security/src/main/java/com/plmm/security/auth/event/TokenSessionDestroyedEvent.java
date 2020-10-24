@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationEvent;
 
-import com.plmm.security.auth.plmmUsernamePasswordAuthenticationToken;
+import com.plmm.security.auth.PlmmUsernamePasswordAuthenticationToken;
 import com.plmm.security.auth.UsernamePasswordAuthenticationToken;
 import com.plmm.security.core.userdetails.UserDetails;
 
@@ -28,8 +28,8 @@ public class TokenSessionDestroyedEvent extends ApplicationEvent {
 				this.userCode = user.getUsercode();
 				this.userName = user.getUserName();
 			}
-			if(upat!=null && upat instanceof plmmUsernamePasswordAuthenticationToken){
-				this.loginIp = (String)((plmmUsernamePasswordAuthenticationToken)upat).getLoginIp();
+			if(upat!=null && upat instanceof PlmmUsernamePasswordAuthenticationToken){
+				this.loginIp = (String)((PlmmUsernamePasswordAuthenticationToken)upat).getLoginIp();
 			}
 		}
 	}
@@ -47,8 +47,8 @@ public class TokenSessionDestroyedEvent extends ApplicationEvent {
 				this.userCode = user.getUsercode();
 				this.userName = user.getUserName();
 			}
-			if(upat!=null && upat instanceof plmmUsernamePasswordAuthenticationToken){
-				this.loginIp = (String)((plmmUsernamePasswordAuthenticationToken)upat).getLoginIp();
+			if(upat!=null && upat instanceof PlmmUsernamePasswordAuthenticationToken){
+				this.loginIp = (String)((PlmmUsernamePasswordAuthenticationToken)upat).getLoginIp();
 			}
 		}
 	}
