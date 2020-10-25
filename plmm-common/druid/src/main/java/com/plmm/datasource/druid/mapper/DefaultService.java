@@ -19,7 +19,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
-import com.plmm.common.exception.plmmSqlException;
+import com.plmm.common.exception.PlmmSqlException;
 
 public class DefaultService implements IDefaultService {
 	private SqlSession session = null;
@@ -36,15 +36,15 @@ public class DefaultService implements IDefaultService {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public int insert(String statementName, Object param) throws plmmSqlException {
+	public int insert(String statementName, Object param) throws PlmmSqlException {
 		try {
 			return this.session.insert(statementName, param);
 		} catch (Exception e) {
-			throw new plmmSqlException("插入失败", e);
+			throw new PlmmSqlException("插入失败", e);
 		}
 	}
 
-	public void batchUpdate(String sql, List<Object[]> batchArgs, int[] argTypes) throws plmmSqlException {
+	public void batchUpdate(String sql, List<Object[]> batchArgs, int[] argTypes) throws PlmmSqlException {
 		try {
 			int fromIndex = 0;
 			int toIndex = 5000;
@@ -59,27 +59,27 @@ public class DefaultService implements IDefaultService {
 				toIndex = batchArgs.size();
 			}
 		} catch (Exception e) {
-			throw new plmmSqlException("批量插入失败", e);
+			throw new PlmmSqlException("批量插入失败", e);
 		}
 	}
 
-	public int delete(String statementName, Object param) throws plmmSqlException {
+	public int delete(String statementName, Object param) throws PlmmSqlException {
 		try {
 			return this.session.delete(statementName, param);
 		} catch (Exception e) {
-			throw new plmmSqlException("删除失败", e);
+			throw new PlmmSqlException("删除失败", e);
 		}
 	}
 
-	public int update(String statementName, Object param) throws plmmSqlException {
+	public int update(String statementName, Object param) throws PlmmSqlException {
 		try {
 			return this.session.update(statementName, param);
 		} catch (Exception e) {
-			throw new plmmSqlException("更新失败", e);
+			throw new PlmmSqlException("更新失败", e);
 		}
 	}
 
-	public <E> List<E> selectList(String statementName) throws plmmSqlException {
+	public <E> List<E> selectList(String statementName) throws PlmmSqlException {
 		try {
 			return this.session.selectList(statementName);
 		} catch (Exception e) {
@@ -89,7 +89,7 @@ public class DefaultService implements IDefaultService {
 						return this.fallback.selectList(statementName);
 				}
 			}
-			throw new plmmSqlException("查询失败", e);
+			throw new PlmmSqlException("查询失败", e);
 		}
 	}
 
@@ -97,7 +97,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql, args != null ? args.toArray() : null, types);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException(" 数据库操作异常：", dex);
+			throw new PlmmSqlException(" 数据库操作异常：", dex);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql, args != null ? args.toArray() : null, types, clazz);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException(" 数据库操作异常：", dex);
+			throw new PlmmSqlException(" 数据库操作异常：", dex);
 		}
 	}
 
@@ -113,7 +113,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException(" 数据库操作异常：", dex);
+			throw new PlmmSqlException(" 数据库操作异常：", dex);
 		}
 	}
 
@@ -121,7 +121,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql, clazz);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException(" 数据库操作异常：", dex);
+			throw new PlmmSqlException(" 数据库操作异常：", dex);
 		}
 	}
 
@@ -129,7 +129,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql, args);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -137,7 +137,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql, clazz, args);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -145,15 +145,15 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.queryForList(sql, args != null ? args.toArray() : null, clazz);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
-	public <T> List<T> queryList(String sql, List<Object> args, RowMapper<T> rowMapper) throws plmmSqlException {
+	public <T> List<T> queryList(String sql, List<Object> args, RowMapper<T> rowMapper) throws PlmmSqlException {
 		try {
 			return this.jdbcTemplate.query(sql, args != null ? args.toArray() : null, rowMapper);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -163,7 +163,7 @@ public class DefaultService implements IDefaultService {
 		} catch (EmptyResultDataAccessException dex) {
 			return null;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -173,7 +173,7 @@ public class DefaultService implements IDefaultService {
 		} catch (EmptyResultDataAccessException dex) {
 			return null;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -183,7 +183,7 @@ public class DefaultService implements IDefaultService {
 		} catch (EmptyResultDataAccessException dex) {
 			return null;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -193,7 +193,7 @@ public class DefaultService implements IDefaultService {
 		} catch (EmptyResultDataAccessException dex) {
 			return null;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -203,7 +203,7 @@ public class DefaultService implements IDefaultService {
 		} catch (EmptyResultDataAccessException dex) {
 			return null;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -213,7 +213,7 @@ public class DefaultService implements IDefaultService {
 		} catch (EmptyResultDataAccessException dex) {
 			return null;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -222,7 +222,7 @@ public class DefaultService implements IDefaultService {
 			int ret = this.jdbcTemplate.update(sql);
 			return ret;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -231,7 +231,7 @@ public class DefaultService implements IDefaultService {
 			int ret = this.jdbcTemplate.update(sql, args);
 			return ret;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -240,7 +240,7 @@ public class DefaultService implements IDefaultService {
 			int ret = this.jdbcTemplate.update(sql, args != null ? args.toArray() : null);
 			return ret;
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -248,7 +248,7 @@ public class DefaultService implements IDefaultService {
 		try {
 			return this.jdbcTemplate.update(sql, args != null ? args.toArray() : null, argTypes);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库操作异常：", dex);
+			throw new PlmmSqlException("数据库操作异常：", dex);
 		}
 	}
 
@@ -270,12 +270,12 @@ public class DefaultService implements IDefaultService {
 			storedProcedure.compile();
 			return storedProcedure.execute(procedureParamMap);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库存储过程调用异常：", dex);
+			throw new PlmmSqlException("数据库存储过程调用异常：", dex);
 		}
 	}
 
 	public Map<String, Object> call(String name, boolean isFunction, Map<String, Object> procedureParamMap,
-			List<SqlParameter> sqlParameters) throws plmmSqlException {
+			List<SqlParameter> sqlParameters) throws PlmmSqlException {
 		try {
 			StoredProcedure storedProcedure = new StoredProcedureHandler(this.jdbcTemplate, name);
 			if ((sqlParameters != null) && (!sqlParameters.isEmpty())) {
@@ -287,12 +287,12 @@ public class DefaultService implements IDefaultService {
 			storedProcedure.compile();
 			return storedProcedure.execute(procedureParamMap);
 		} catch (DataAccessException dex) {
-			throw new plmmSqlException("数据库存储过程调用异常：", dex);
+			throw new PlmmSqlException("数据库存储过程调用异常：", dex);
 		}
 	}
 
 	public <E> List<E> selectList(String statementName, Object param, int offset, int limit)
-			throws plmmSqlException {
+			throws PlmmSqlException {
 		try {
 			if (limit < 0) {
 				return selectList(statementName, param);
@@ -306,11 +306,11 @@ public class DefaultService implements IDefaultService {
 					}
 				}
 			}
-			throw new plmmSqlException("查询失败", e);
+			throw new PlmmSqlException("查询失败", e);
 		}
 	}
 
-	public <E> List<E> selectList(String statementName, Object param) throws plmmSqlException {
+	public <E> List<E> selectList(String statementName, Object param) throws PlmmSqlException {
 		try {
 			return this.session.selectList(statementName, param);
 		} catch (Exception e) {
@@ -320,11 +320,11 @@ public class DefaultService implements IDefaultService {
 						return this.fallback.selectList(statementName, param);
 				}
 			}
-			throw new plmmSqlException("查询失败", e);
+			throw new PlmmSqlException("查询失败", e);
 		}
 	}
 
-	public <T> T selectOne(String statementName, Object param) throws plmmSqlException {
+	public <T> T selectOne(String statementName, Object param) throws PlmmSqlException {
 		try {
 			return this.session.selectOne(statementName, param);
 		} catch (Exception e) {
@@ -334,12 +334,12 @@ public class DefaultService implements IDefaultService {
 						return this.fallback.selectOne(statementName, param);
 				}
 			}
-			throw new plmmSqlException("查询失败", e);
+			throw new PlmmSqlException("查询失败", e);
 		}
 	}
 
 	public Object[] getCommonPaged(String queryStatement, String countStatement, Object param, int offset, int limit)
-			throws plmmSqlException {
+			throws PlmmSqlException {
 		try {
 			Object[] obj = new Object[2];
 			obj[0] = selectList(queryStatement, param, offset, limit);
@@ -353,7 +353,7 @@ public class DefaultService implements IDefaultService {
 					}
 				}
 			}
-			throw new plmmSqlException("查询失败", e);
+			throw new PlmmSqlException("查询失败", e);
 		}
 	}
 
@@ -375,20 +375,20 @@ public class DefaultService implements IDefaultService {
 			}
 	}
 
-	private void isNull(Object o) throws plmmSqlException {
+	private void isNull(Object o) throws PlmmSqlException {
 		if (o == null)
-			throw new plmmSqlException(new StringBuilder().append(o).append("未配置！该方法不可用").toString());
+			throw new PlmmSqlException(new StringBuilder().append(o).append("未配置！该方法不可用").toString());
 	}
 
-	public int[] batchUpdate(String[] sql) throws plmmSqlException {
+	public int[] batchUpdate(String[] sql) throws PlmmSqlException {
 		try {
 			return this.jdbcTemplate.batchUpdate(sql);
 		} catch (Exception e) {
-			throw new plmmSqlException("批量插入失败", e);
+			throw new PlmmSqlException("批量插入失败", e);
 		}
 	}
 
-	public void batchUpdate(String sql, List<Object[]> batchArgs) throws plmmSqlException {
+	public void batchUpdate(String sql, List<Object[]> batchArgs) throws PlmmSqlException {
 		try {
 			int fromIndex = 0;
 			int toIndex = 5000;
@@ -400,46 +400,46 @@ public class DefaultService implements IDefaultService {
 				toIndex += 5000;
 			}
 		} catch (Exception e) {
-			throw new plmmSqlException("批量插入失败", e);
+			throw new PlmmSqlException("批量插入失败", e);
 		}
 	}
 
-	public void batchUpdate(String sql, BatchPreparedStatementSetter pss) throws plmmSqlException {
+	public void batchUpdate(String sql, BatchPreparedStatementSetter pss) throws PlmmSqlException {
 		try {
 			this.jdbcTemplate.batchUpdate(sql, pss);
 		} catch (Exception e) {
-			throw new plmmSqlException("批量插入失败", e);
+			throw new PlmmSqlException("批量插入失败", e);
 		}
 	}
 
 	public <T> void batchUpdate(String sql, Collection<T> batchArgs, int batchSize,
-			ParameterizedPreparedStatementSetter<T> ppss) throws plmmSqlException {
+			ParameterizedPreparedStatementSetter<T> ppss) throws PlmmSqlException {
 		try {
 			this.jdbcTemplate.batchUpdate(sql, batchArgs, batchSize, ppss);
 		} catch (Exception e) {
-			throw new plmmSqlException("批量插入失败", e);
+			throw new PlmmSqlException("批量插入失败", e);
 		}
 	}
 
-	public String keyCreate(String sequence, Character prefix) throws plmmSqlException {
+	public String keyCreate(String sequence, Character prefix) throws PlmmSqlException {
 		try {
 			Long seqId = (Long) this.jdbcTemplate.queryForObject(
 					new StringBuilder().append("select ").append(sequence).append(".nextval from dual").toString(),
 					Long.class);
 			return format20bit(prefix, seqId.longValue());
 		} catch (Exception e) {
-			throw new plmmSqlException("获取seq失败", e);
+			throw new PlmmSqlException("获取seq失败", e);
 		}
 	}
 
-	public String keyCreatePad15Bit(String sequence, Character prefix) throws plmmSqlException {
+	public String keyCreatePad15Bit(String sequence, Character prefix) throws PlmmSqlException {
 		try {
 			Long seqId = (Long) this.jdbcTemplate.queryForObject(
 					new StringBuilder().append("select ").append(sequence).append(".nextval from dual").toString(),
 					Long.class);
 			return format15bit(prefix, seqId.longValue());
 		} catch (Exception e) {
-			throw new plmmSqlException("获取seq失败", e);
+			throw new PlmmSqlException("获取seq失败", e);
 		}
 	}
 
@@ -498,21 +498,21 @@ public class DefaultService implements IDefaultService {
 		return new StringBuilder().append(prefix == null ? "" : prefix).append(datestr).append(num).toString();
 	}
 
-	public long getSeqByName(String sequence) throws plmmSqlException {
+	public long getSeqByName(String sequence) throws PlmmSqlException {
 		try {
 			return ((Long) this.jdbcTemplate.queryForObject(
 					new StringBuilder().append("select ").append(sequence).append(".nextval from dual").toString(),
 					Long.class)).longValue();
 		} catch (Exception e) {
-			throw new plmmSqlException("获取序号失败", e);
+			throw new PlmmSqlException("获取序号失败", e);
 		}
 	}
 
-	public String getIdBySeq(Character prefix, long number) throws plmmSqlException {
+	public String getIdBySeq(Character prefix, long number) throws PlmmSqlException {
 		try {
 			return format20bit(prefix, number);
 		} catch (Exception e) {
-			throw new plmmSqlException("获取序号失败", e);
+			throw new PlmmSqlException("获取序号失败", e);
 		}
 	}
 }
