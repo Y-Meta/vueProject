@@ -104,14 +104,6 @@
 			<groupId>com.plmm</groupId>
 			<artifactId>vo-common</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.plmm</groupId>
-			<artifactId>vo-common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.plmm</groupId>
-			<artifactId>vo-common</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>

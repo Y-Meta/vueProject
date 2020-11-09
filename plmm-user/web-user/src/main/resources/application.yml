@@ -46,12 +46,12 @@ plmm:
 
 app:
   id: web-user
-#apollo
-apollo:
-  meta: http://127.0.0.1:9080 #apollo meta_server地址
-  bootstrap:
-    enabled: true
-    namespaces: tp_plmm_service.ds_mysql_config #指定要加载的配置文件
+#apollo先注释掉
+#apollo:
+#  meta: http://127.0.0.1:9080 #apollo meta_server地址
+#  bootstrap:
+#    enabled: true
+#    namespaces: tp_plmm_service.ds_mysql_config #指定要加载的配置文件
 #  aop:
 #    proxy-target-class: false  #JDK
 #  task:
