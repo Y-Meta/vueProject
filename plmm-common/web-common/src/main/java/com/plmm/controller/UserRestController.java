@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.plmm.common.base.Result;
 import com.plmm.common.base.ResultEnum;
-import com.plmm.common.exception.plmmSqlException;
+import com.plmm.common.exception.PlmmSqlException;
 import com.plmm.common.sysuser.model.UserVO;
 import com.plmm.common.utils.ResultUtil;
 import com.plmm.security.core.context.SecurityContextHolder;
@@ -59,7 +59,7 @@ public class UserRestController {
 			Integer pageSize = Integer.parseInt(param.get("pagesize").toString());
 			Object[] objArray = userService.getUser(map, offset, pageSize);
 			return ResultUtil.sucess(objArray);
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class UserRestController {
 		try {
 			UserVO vo = userService.selectOneUser(code);
 			return ResultUtil.sucess(vo);
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
@@ -101,7 +101,7 @@ public class UserRestController {
 		try {
 			UserVO vo = userService.selectOneUser(param);
 			return ResultUtil.sucess(vo); 
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
@@ -122,7 +122,7 @@ public class UserRestController {
 		try {
 			List<UserVO> vo = userService.getUserList(param);
 			return ResultUtil.sucess(vo);
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
@@ -149,7 +149,7 @@ public class UserRestController {
 		try {
 			String staffNo = SecurityContextHolder.getContext().getAuthentication().getName();
 			return userService.saveUser(param,staffNo);
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
@@ -170,7 +170,7 @@ public class UserRestController {
 		try {
 			String staffNo = SecurityContextHolder.getContext().getAuthentication().getName();
 			return userService.updateUser(param,staffNo);
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
@@ -191,7 +191,7 @@ public class UserRestController {
 		try {
 			String staffNo = SecurityContextHolder.getContext().getAuthentication().getName();
 			return userService.deleteUser(param,staffNo);
-		} catch (plmmSqlException e) {
+		} catch (PlmmSqlException e) {
 			logger.error(e.getMessage(), e);
 			return ResultUtil.error(ResultEnum.ST000001);
 		} catch (Exception e) {
