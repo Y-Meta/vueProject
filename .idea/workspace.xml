@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077c3a5f-4715-436a-86c1-42dc5efb2b00" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/plmm-user/web-user/src/main/resources/ehcache.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plmm-common/druid/src/main/java/com/plmm/datasource/druid/mapper/DefaultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/plmm-common/druid/src/main/java/com/plmm/datasource/druid/mapper/DefaultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plmm-common/druid/src/main/java/com/plmm/datasource/druid/mapper/IDefaultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/plmm-common/druid/src/main/java/com/plmm/datasource/druid/mapper/IDefaultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plmm-user/web-user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/plmm-user/web-user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plmm-user/web-user/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/plmm-user/web-user/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plmm-user/interface-user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/plmm-user/web-user/src/main/resources" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -67,6 +68,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\myGitWorkSpace\vueProject\plmm-user\web-user\src\main\resources" />
       <recent name="E:\myGitWorkSpace\vueProject\plmm-user\interface-user" />
       <recent name="E:\myGitWorkSpace\vueProject\plmm-user\service-user" />
       <recent name="E:\myGitWorkSpace\vueProject\plmm-user\vo-user" />
@@ -171,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603547308595</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="init">
+      <created>1603613984258</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603613984258</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,22 +220,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="951" y="684" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1603547059925" />
-    <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1603549103141">
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1603614784452">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1603549103141" />
-    <state width="1491" height="223" key="GridCell.Tab.0.center" timestamp="1603549103141">
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1603614784452" />
+    <state width="1491" height="223" key="GridCell.Tab.0.center" timestamp="1603614784451">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1603549103141" />
-    <state width="1491" height="223" key="GridCell.Tab.0.left" timestamp="1603549103141">
+    <state width="1491" height="223" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1603614784451" />
+    <state width="1491" height="223" key="GridCell.Tab.0.left" timestamp="1603614784451">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1603549103141" />
-    <state width="1491" height="223" key="GridCell.Tab.0.right" timestamp="1603549103141">
+    <state width="1491" height="223" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1603614784451" />
+    <state width="1491" height="223" key="GridCell.Tab.0.right" timestamp="1603614784451">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1603549103141" />
+    <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1603614784451" />
     <state x="1163" y="523" key="IDE.errors.dialog" timestamp="1603283561958">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -243,10 +252,14 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1602" y="650" key="VCS.EditChangelistDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1603546289759" />
-    <state x="1314" y="456" key="Vcs.Push.Dialog.v2" timestamp="1603547325113">
+    <state x="1314" y="456" key="Vcs.Push.Dialog.v2" timestamp="1603613991584">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1314" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1603547325113" />
+    <state x="1314" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1603613991584" />
+    <state x="1224" y="559" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603613967604">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1224" y="559" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1603613967604" />
     <state x="1611" y="224" width="666" height="671" key="find.popup" timestamp="1603546845251">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

@@ -35,14 +35,14 @@
 		<!-- 			<groupId>com.plmm</groupId> -->
 		<!-- 			<artifactId>security</artifactId> -->
 		<!-- 		</dependency> -->
-		<dependency>
-			<groupId>com.plmm</groupId>
-			<artifactId>webmvc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.plmm</groupId>
-			<artifactId>redis-session</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.plmm</groupId>-->
+<!--			<artifactId>webmvc</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.plmm</groupId>-->
+<!--			<artifactId>redis-session</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.plmm</groupId>
 			<artifactId>vo-user</artifactId>

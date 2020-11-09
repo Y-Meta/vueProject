@@ -39,6 +39,9 @@ dubbo:
   protocol:
     name: dubbo
     port: 2${server.port}
+plmm:
+  session:
+    type: local
 
 
 app:
